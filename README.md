@@ -8,5 +8,5 @@ CLI game built in Ruby.
 ## How To Run
 * Download this repository
 * Open CLI and navigate to chess directory
-* Run the command 'ruby game.rb'
+* Run the command `ruby game.rb`
 * Follow in game instructions and have fun!
