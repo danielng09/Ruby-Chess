@@ -13,11 +13,8 @@ class King < Piece
       "\u2654"
     end
   end
-  #call moves(horizontal)
 
-  def moves
-    deltas = [[0,1],[1,0],[-1,0],[0,-1],[1,1],[-1,-1],[-1,1],[1,-1]]
-    super(deltas)
+  def steppable_dirs
+    [[0,1],[1,0],[-1,0],[0,-1],[1,1],[-1,-1],[-1,1],[1,-1]]
   end
-
 end

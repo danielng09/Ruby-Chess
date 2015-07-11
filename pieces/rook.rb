@@ -13,7 +13,6 @@ class Rook < Piece
       "\u2656"
     end
   end
-  #call moves(horizontal)
 
   def moves
     list = []

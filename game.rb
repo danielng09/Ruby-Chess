@@ -28,14 +28,9 @@ class Game
 
     @board.display_board
     winner = turn.odd? ? @player1.color : @player2.color
-    puts "Congrats #{winner.to_s.capitalize}!!!".colorize(:magenta)
+    puts "Checkmate. Congrats #{winner.to_s.capitalize}!!!".colorize(:magenta)
   end
 end
 
-
-
-player1 = HumanPlayer.new
-player2 = HumanPlayer.new
-
-chess = Game.new(player1, player2)
+chess = Game.new(HumanPlayer.new, HumanPlayer.new)
 chess.play

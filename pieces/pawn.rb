@@ -14,7 +14,6 @@ class Pawn < Piece
     end
   end
 
-# create posible positions to move to
   def vertical_moves
     deltas = [[1, 0]]
     deltas << [2,0] unless moved?

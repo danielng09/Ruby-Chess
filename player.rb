@@ -13,6 +13,7 @@ class HumanPlayer
 
   def play_turn
     begin
+      board.error = "Check!" if board.in_check?(color)
       start = select_start.dup
       last = select_end.dup
       board.move(start, last)

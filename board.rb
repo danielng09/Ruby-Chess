@@ -17,7 +17,6 @@ class Board
     end
   end
 
-# move = try to do move! then return if it has an error
   def move(start, end_pos)
     moving_piece = @grid[start.first][start.last]
     if moving_piece.valid_moves.include?(end_pos)
@@ -109,7 +108,7 @@ class Board
       print "#{8 - row_index}".center(3)
       row.each_with_index do |col, col_index|
         if [row_index, col_index] == cursor || [row_index, col_index] == start_cursor
-          background = :yellow
+          background = (color == :black ? :yellow : :light_magenta )
         elsif start_cursor && grid[start_cursor[0]][start_cursor[1]].valid_moves.include?([row_index, col_index])
           background = :green
         elsif (col_index + row_index) % 2 == 0

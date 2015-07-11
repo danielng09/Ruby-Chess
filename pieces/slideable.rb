@@ -29,16 +29,14 @@ module Slideable
     end
   end
 
+  def valid_moves
+    moves.reject do |x, y|
+      other_piece = @board.grid[x][y]
+      if other_piece.nil?
+        false
+      else
+        other_piece.color == self.color
+      end
+    end
+  end
 end
-
-#
-# # while current.all? { |ele| ele.between?(0,7) }
-# while true
-#   if (current[0] + y_diff).between?(0,7) && (current[1] + x_diff).between?(0,7)
-#     current[0] += y_diff
-#     current[1] += x_diff
-#     deltas << current.dup
-#   end
-#
-#   break unless @board.grid[current.first][current.last].nil?
-# end

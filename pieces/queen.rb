@@ -13,7 +13,6 @@ class Queen < Piece
       "\u2655"
     end
   end
-  #call moves(horizontal)
 
   def moves
     list = []

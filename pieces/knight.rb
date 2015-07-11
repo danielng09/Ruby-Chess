@@ -6,18 +6,10 @@ class Knight < Piece
   end
 
   def display
-    case @color
-    when :black
-      "\u265E"
-    when :white
-      "\u2658"
-    end
+    color == :black ? "\u265E" : "\u2658"
   end
-  #call moves(horizontal)
 
-  def moves
+  def steppable_dirs
     deltas = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]]
-    super(deltas)
   end
-
 end
