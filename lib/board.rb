@@ -2,6 +2,7 @@ require_relative 'piece'
 
 class Board
   attr_reader :grid
+  attr_accessor :cursor, :turn, :color, :start_cursor, :error
 
   def self.blank_grid
     Array.new(8) { Array.new(8) }
@@ -14,7 +15,6 @@ class Board
       populate_board(:black)
       populate_board(:white)
     end
-
   end
 
 # move = try to do move! then return if it has an error
@@ -33,6 +33,7 @@ class Board
     moving_piece.pos = end_pos
     @grid[start.first][start.last] = nil
     @grid[end_pos.first][end_pos.last] = moving_piece
+    moving_piece.moved = true
   end
 
 
@@ -101,10 +102,22 @@ class Board
   end
 
   def display_board
+    system 'clear'
+    puts "Chess".center(38).colorize(:blue)
+    puts "#{error}".colorize(:red)
     @grid.each_with_index do |row, row_index|
       print "#{8 - row_index}".center(3)
       row.each_with_index do |col, col_index|
-        background = ((col_index + row_index) % 2 == 0 ? :light_black : :white)
+        if [row_index, col_index] == cursor || [row_index, col_index] == start_cursor
+          background = :yellow
+        elsif start_cursor && grid[start_cursor[0]][start_cursor[1]].valid_moves.include?([row_index, col_index])
+          background = :green
+        elsif (col_index + row_index) % 2 == 0
+          background = :light_black
+        else
+          background = :white
+        end
+
         if col.nil?
           print "".center(4).colorize(background: background)
         else
@@ -113,7 +126,11 @@ class Board
       end
       print "\n"
     end
-    puts "A   B   C   D   E   F   G   H".center(38)
+    puts "A   B   C   D   E   F   G   H\n".center(38)
+    puts "#{color.to_s.capitalize}'s move".colorize(:blue)
+    puts "Hit q to quit".colorize(:blue)
+    puts "Navigate using w-a-s-d keys and enter".colorize(:blue)
+    return nil
   end
 
   # def [](row, col)

@@ -20,22 +20,22 @@ class Game
 
     turn = 0
     until @board.checkmate?(:black) || @board.checkmate?(:white)
-      @board.display_board
       current_player = (turn % 2 == 0 ? @player1 : @player2)
+      @board.color = current_player.color
       current_player.play_turn
       turn += 1
     end
 
     @board.display_board
-    winner = turn.odd? ? @player1.name : @player2.name
-    puts "Congrats #{winner}, you won in #{turn/2} rounds!"
+    winner = turn.odd? ? @player1.color : @player2.color
+    puts "Congrats #{winner.to_s.capitalize}!!!".colorize(:magenta)
   end
 end
 
 
 
-daniel = HumanPlayer.new("Player1")
-karen = HumanPlayer.new("Player2")
+player1 = HumanPlayer.new
+player2 = HumanPlayer.new
 
-chess = Game.new(daniel, karen)
+chess = Game.new(player1, player2)
 chess.play
