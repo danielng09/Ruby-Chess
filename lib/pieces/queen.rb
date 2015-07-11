@@ -8,9 +8,9 @@ class Queen < Piece
   def display
     case @color
     when :black
-      print "\u265B"
+      "\u265B"
     when :white
-      print "\u2655"
+      "\u2655"
     end
   end
   #call moves(horizontal)

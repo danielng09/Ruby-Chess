@@ -8,9 +8,9 @@ class Rook < Piece
   def display
     case @color
     when :black
-      print "\u265C"
+      "\u265C"
     when :white
-      print "\u2656"
+      "\u2656"
     end
   end
   #call moves(horizontal)

@@ -8,9 +8,9 @@ class King < Piece
   def display
     case @color
     when :black
-      print "\u265A"
+      "\u265A"
     when :white
-      print "\u2654"
+      "\u2654"
     end
   end
   #call moves(horizontal)

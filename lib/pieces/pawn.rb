@@ -8,9 +8,9 @@ class Pawn < Piece
   def display
     case @color
     when :black
-      print "\u265F"
+      "\u265F"
     when :white
-      print "\u2659"
+      "\u2659"
     end
   end
 

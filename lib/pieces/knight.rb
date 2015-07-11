@@ -8,9 +8,9 @@ class Knight < Piece
   def display
     case @color
     when :black
-      print "\u265E"
+      "\u265E"
     when :white
-      print "\u2658"
+      "\u2658"
     end
   end
   #call moves(horizontal)

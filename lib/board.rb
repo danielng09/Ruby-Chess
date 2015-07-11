@@ -1,10 +1,7 @@
 require_relative 'piece'
-require 'colorize'
 
 class Board
   attr_reader :grid
-
-
 
   def self.blank_grid
     Array.new(8) { Array.new(8) }
@@ -104,22 +101,19 @@ class Board
   end
 
   def display_board
-
-    puts "   A  B  C  D  E  F  G  H"
-
-
     @grid.each_with_index do |row, row_index|
-      print "#{8 - row_index}  "
+      print "#{8 - row_index}".center(3)
       row.each_with_index do |col, col_index|
+        background = ((col_index + row_index) % 2 == 0 ? :light_black : :white)
         if col.nil?
-          print "-- "
+          print "".center(4).colorize(background: background)
         else
-          print " #{col.display} "
+          print "#{col.display}".center(4).colorize(background: background, color: :black)
         end
       end
       print "\n"
     end
-    "chess!"
+    puts "A   B   C   D   E   F   G   H".center(38)
   end
 
   # def [](row, col)
@@ -181,18 +175,4 @@ class Board
     end
     duplicate
   end
-
 end
-
-# game = Board.new
-# p game.display_board
-#
-# game.move([6,5],[5,5])
-# game.move([1,4],[3,4])
-# game.move([6,6],[4,6])
-# game.move([0,3],[4,7])
-# game.move!([7,5],[5,4])
-#
-# p game.display_board
-#
-# p game.checkmate?(:white)

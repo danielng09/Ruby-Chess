@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 class Bishop < Piece
   include Slideable
 
@@ -10,12 +8,11 @@ class Bishop < Piece
   def display
     case @color
     when :black
-      print "\u265D"
+      "\u265D"
     when :white
-      print "\u2657"
+      "\u2657"
     end
   end
-  #call moves(horizontal)
 
   def moves
     list = []
@@ -24,4 +21,3 @@ class Bishop < Piece
   end
 
 end
-#

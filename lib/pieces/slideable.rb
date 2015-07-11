@@ -28,7 +28,7 @@ module Slideable
       position.all? { |coordinate| coordinate.between?(0,7) }
     end
   end
-  
+
 end
 
 #
